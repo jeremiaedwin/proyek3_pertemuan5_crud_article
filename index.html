@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet" integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid p-0 m-0">
+        <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+        <header class="header header-sticky mb-4">
+            <div class="header-divider"></div>
+            <div class="container-fluid">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb my-0 ms-2">
+                <li class="breadcrumb-item">
+                    <!-- if breadcrumb is single--><span>Home</span>
+                </li>
+                <li class="breadcrumb-item active"><span>Dashboard</span></li>
+                </ol>
+            </nav>
+            </div>
+        </header>
+        <div class="body flex-grow-1 px-3">
+            <div class="container-lg">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h4 class="card-title mb-0">Article</h4>
+                        </div>
+                    </div>
+                    <div class="mt-3 mb-3">
+                        <button type="button" class="btn btn-success text-white" data-coreui-toggle="modal" data-coreui-target="#insertModal">
+                            Create Article
+                        </button>
+                    </div>
+                    <div class= "row" id='row'>
+            
+                    </div>
+                </div>
+
+            </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="insertModal" tabindex="-1" aria-labelledby="insertModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="insertModalLabel">Create New Article</h5>
+                    <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label for="">Judul</label>
+                                <input class="form-control" name="judul" id="judul" type="text" placeholder="Default input" aria-label="default input example">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Penulis</label>
+                                <input class="form-control" name="penulis" id="penulis" type="text" placeholder="Default input" aria-label="default input example">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Kategori</label>
+                                <select name="kategori" id="kategori" class="form-control" id="">
+                                    <option value="Olahraga">Olahraga</option>
+                                    <option value="Game">Game</option>
+                                    <option value="Kesehatan">Kesehatan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Tag</label>
+                                <select name="tag" id="tag" class="form-control" id="">
+                                    <option value="Sepak Bola">Sepak Bola</option>
+                                    <option value="Mobile Legend">Mobile Legend</option>
+                                    <option value="Hidup Sehat">Hidup Sehat</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Konten</label>
+                                <textarea name="konten" id="konten" class="form-control" cols="30" rows="10"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success text-white mt-2" id="submit">Insert</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="updateModalLabel">Update Article</h5>
+                    <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label for="">Judul</label>
+                                <input type="hidden" name="id" id="id">
+                                <input class="form-control" name="judul_update" id="judul_update" type="text" placeholder="Default input" aria-label="default input example">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Penulis</label>
+                                <input class="form-control" name="penulis_update" id="penulis_update" type="text" placeholder="Default input" aria-label="default input example">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Kategori</label>
+                                <select name="kategori_update" id="kategori_update" class="form-control" id="">
+                                    <option value="Olahraga">Olahraga</option>
+                                    <option value="Game">Game</option>
+                                    <option value="Kesehatan">Kesehatan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Tag</label>
+                                <select name="tag_update" id="tag_update" class="form-control" id="">
+                                    <option value="Sepak Bola">Sepak Bola</option>
+                                    <option value="Mobile Legend">Mobile Legend</option>
+                                    <option value="Hidup Sehat">Hidup Sehat</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Konten</label>
+                                <textarea name="konten_update" id="konten_update" class="form-control" cols="30" rows="10"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success text-white mt-2" id="update">Update</button>
+                            <button  class="btn btn-danger text-white  mt-2" onclick="Delete()" id="delete">Delete</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div><a href="https://coreui.io">CoreUI </a><a href="https://coreui.io">Bootstrap Admin Template</a> &copy; 2022 creativeLabs.</div>
+            <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/docs/">CoreUI UI Components</a></div>
+        </footer>
+        </div>
+    </div>
+    
+    
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js" integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(e) {   
+        $.ajax({
+            url: 'http://localhost:8080/api/article/',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            data: {
+            },
+            success: function (result) {
+                buildCard(result);
+            },
+            error: function () {
+                console.log("error");
+            }
+        });
+    });
+
+    $("#submit").click(function(e) {  
+        
+        var data = {
+            'judul' :$("#judul").val(),
+            'penulis' : $("#penulis").val(),
+            'kategori' : $("#kategori").val(),
+            'tag' : $("#tag").val(),
+            'konten' : $("#konten").val()
+        }
+        
+        $.ajax({
+            url: 'http://localhost:8080/api/article/',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "POST",
+            data: data,
+            success: function (data) {
+                location. reload();
+            },
+            error: function(error){
+                console.log("Something went wrong", error);
+            }
+        });
+    });
+
+    $("#update").click(function(e) {  
+        var id = $("#id").val()
+        var data = {
+            'judul' :$("#judul_update").val(),
+            'penulis' : $("#penulis_update").val(),
+            'kategori' : $("#kategori_update").val(),
+            'tag' : $("#tag_update").val(),
+            'konten' : $("#konten_update").val()
+        }
+        
+        $.ajax({
+            url: 'http://localhost:8080/api/article/'+id,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "PUT",
+            data: data,
+            success: function (data) {
+                location. reload();
+            },
+            error: function(error){
+                console.log("Something went wrong", error);
+            }
+        });
+    });
+
+    function buildCard(data) {
+        for (var i = 0; i < data.length; i++) {
+        var card = `
+            <div class="col-sm-6">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">${data[i].judul}</h5>
+                    <h6 class="lead">Posted by ${data[i].penulis}</h5>
+                    <button type="disable" class="btn btn-sm btn-warning text-white">${data[i].kategori}</button>
+                    <button type="disable" class="btn btn-sm btn-info text-white">#${data[i].tag}</button>
+                    <br>
+                    <button class="btn btn-primary text-white mt-2" onclick="findId('${data[i]._id}')" data-coreui-toggle="modal" data-coreui-target="#updateModal">Detail</button>
+                    <br>
+                    <span class="h6">${data[i].createdAt}</span>
+                </div>
+                </div>
+            </div>
+        `
+        $('#row').append(card);
+    }
+    }
+
+    function Delete() {  
+        var id = $("#id").val()
+        $.ajax({
+            url: 'http://localhost:8080/api/article/'+id,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "DELETE",
+            success: function (data) {
+                location. reload();
+            },
+            error: function(error){
+                console.log("Something went wrong", error);
+            }
+        });
+        
+    }
+
+    function findId(id){
+        $.ajax({
+            url: 'http://localhost:8080/api/article/'+id,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (result) {
+                $("#id").val(result._id);
+                $("#judul_update").val(result.judul);
+                $("#penulis_update").val(result.penuls);
+                $("#kategori_update").val(result.kategori);
+                $("#tag_update").val(result.tag);
+                $("#konten_update").val(result.konten);
+            },
+            error: function () {
+                console.log("error");
+            }
+        })
+    }
+</script>
+</html>
