@@ -41,3 +41,54 @@ exports.findAll = (req, res)=> {
         });
     });
 };
+
+exports.findOne = (req,res) => {
+    const id = req.params.id
+    Article.findById(id).then(data => {
+        if(!data)
+            res.status(404).send({message: "Not found article id " + id})
+        else res.send(data)
+    })
+    .catch(err => {
+        res.status(500).send({message:"error retrieving Article with id=" + id })
+    })
+}
+
+// update the articel by id
+exports.update = (req, res) => {
+    if(!req.body) {
+        return res.status(400).send({
+            message: "Data to update cannot by empty!"
+        })
+    }
+
+    const id = req.params.id;
+    Article.findByIdAndUpdate(id, req.body, {useFindAndModify:false}).then(data=>{
+        if(!data){
+            res.status(404).send({
+                message: `Cannot update Article with id=${id}. Maybe Article was not found!`
+            });
+        } else res.send({ message: "Article was updated successfully." });
+    })
+}
+
+// delete article
+exports.delete = (req, res) => {
+    const id = req.params.id
+    Article.findByIdAndRemove(id).then(data => {
+        if(!data) {
+            res.status(404).send({
+                message: `Article with id=${id} not found`
+            })
+        } else {
+            res.send({
+                message: "Article was deleted successfully"
+            })
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:"could not delete article"
+        })
+    })
+}

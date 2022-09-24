@@ -5,14 +5,8 @@ module.exports = mongoose => {
             {
                 judul:String,
                 penulis:String,
-                kategori: {
-                    type:String,
-                    enum:["Olah Raga", "Game", "Food", "Vocation"]
-                },
-                tag: {
-                    type:String,
-                    enum:["Bola", "Mobile Legend", "Nasi Goreng", "Bali"]
-                },
+                kategori:String,
+                tag: String,
                 konten:String
             },
             { timestamps:true }
